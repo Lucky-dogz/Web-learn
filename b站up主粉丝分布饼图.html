@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>b站up主粉丝分布饼图</title>
+    <style>
+        .box {
+            width: 700px;
+            height: 500px;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script src="js/echarts.min.js"></script>
+    <!-- <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script> -->
+    <script>
+        var myChart = echarts.init(document.querySelector(".box"));
+        // 指定图表的配置项和数据
+        option = {
+            backgroundColor: '#fff',
+            title: {
+                text: 'B站up主粉丝分布饼图',
+                subtext: '',
+                x: '30%',
+                y: 30
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient: 'vertical',
+                left: '80%',
+                y: 50,
+            },
+            series: [{
+                name: '详情',
+                type: 'pie',
+                minAngle: 0,
+                radius: '55%',
+                center: ['45%', '70%'],
+                data:
+                    [{
+                        value: 999,
+                        name: '0-1万'
+                    }, {
+                        value: 999,
+                        name: '1-10万'
+                    }, {
+                        value: 696,
+                        name: '10-50万'
+                    }, {
+                        value: 128,
+                        name: '50-100万'
+                    }, {
+                        value: 89,
+                        name: '100-500万'
+                    }, {
+                        value: 8,
+                        name: '500-1000万'
+                    }, {
+                        value: 0,
+                        name: '>1000万'
+                    }],
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    },
+                    normal: {
+                        label: {
+                            show: true,
+                            position: 'outer',
+                            formatter: '{d}%',
+                            textStyle: {
+                                fontWeight: 400,
+                                fontSize: 15,
+                            },
+                        },
+                        lableLine: {
+                            show: false,
+                        }
+                    }
+                }
+            }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+
+</html>
