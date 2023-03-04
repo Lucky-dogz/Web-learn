@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "Tom商场",
+  "usingComponents": {
+    "goods-list": "/components/goods-list/goods-list"
+  }
+}

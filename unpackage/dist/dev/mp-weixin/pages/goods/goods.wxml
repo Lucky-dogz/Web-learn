@@ -1,0 +1,1 @@
+<view class="goods_list"><goods-list vue-id="576f0adc-1" goods="{{goods}}" data-event-opts="{{[['^goGoodsDetail',[['goGoodsDetail']]]]}}" bind:goGoodsDetail="__e" bind:__l="__l"></goods-list><block wx:if="{{isOver}}"><view class="isOver">------ 没有啦，一边玩去吧~ ------</view></block></view>

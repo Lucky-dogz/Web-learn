@@ -1,0 +1,1 @@
+<view class="news"><block wx:for="{{Message}}" wx:for-item="item" wx:for-index="index" wx:key="index"><view data-event-opts="{{[['tap',[['navigator',[index]]]]]}}" class="news_item" bindtap="__e"><image src="{{item.image_src}}"></image><view class="info"><view class="tit">{{''+item.name+''}}</view><view class="type">{{''+Types[index]+''}}</view></view></view></block></view>

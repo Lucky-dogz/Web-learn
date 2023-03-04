@@ -1,0 +1,1 @@
+<view class="contact"><image class="img" src="http://www.itcast.cn/2018czydz/images/gywmban.jpg"></image><view class="info"><view data-event-opts="{{[['tap',[['callPhone',['$event']]]]]}}" bindtap="__e">联系电话：400-618-9090（点击拨打）</view><view>联系地址：广东省佛山市南海区狮山镇南海软件信息园桃园西路</view></view><map class="map" latitude="{{latitude}}" longitude="{{longitude}}"></map></view>

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "今日推荐",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "news-item": "/components/news-item/news-item"
+  }
+}
