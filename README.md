@@ -1,22 +1,17 @@
 # vue-manage
 
 ### 下载依赖
-
 ```
 npm install
 ```
-
 ### 启动项目
-
 ```
 npm run serve
 ```
-
 ### 打包项目
 ```
 npm run build
 ```
-
 ## 项目大纲
 
 <img src="项目大纲.png" alt="项目大纲" style="zoom:100%;" />
