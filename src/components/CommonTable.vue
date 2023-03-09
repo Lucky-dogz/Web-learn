@@ -10,21 +10,23 @@
         :label="item.label"
         :width="item.width ? item.width : 125"
       >
-        <!-- scope是每一行的所有属性，里面的row存着数据 -->
-        <template slot-scope="scope">
-          <span style="margin-left: 10px">{{ scope.row[item.prop] }}</span>
+        <!-- scope是一行的所有属性，里面的row存着数据 -->
+        <template slot-scope="qwe">
+          <span style="margin-left: 10px">{{ qwe.row[item.prop] }}</span>
         </template>
       </el-table-column>
+
       <!-- 最后一列——操作 -->
       <el-table-column label="操作" min-width="180">
         <template slot-scope="scope">
           <el-button size="mini" @click="handleEdit(scope.row)">编辑</el-button>
-          <el-button size="mini" @click="handleDelete(scope.row)" type="danger"
-            >删除</el-button
-          >
+          <el-button size="mini" @click="handleDelete(scope.row)" type="danger">
+            删除
+          </el-button>
         </template>
       </el-table-column>
     </el-table>
+
     <!-- 分页栏 -->
     <el-pagination
       class="pager"
@@ -59,6 +61,7 @@ export default {
     },
     // 删除按钮，只有自己新增的用户才可以删除，其它的是mock模拟出来的，删不掉
     handleDelete(row) {
+      // console.log(row);
       this.$emit("del", row);
     },
     // 切换页面按钮
@@ -71,13 +74,15 @@ export default {
 
 <style lang="less" scoped>
 .common-table {
-  height: calc(100% - 62px);
+  height: calc(100% - 80px);
   background-color: #fff;
   position: relative;
   .pager {
+    display: inline-block;
     position: absolute;
-    bottom: 0;
-    right: 20px;
+    left: 860px;
+    width: 100px;
+    height: 50px;
   }
 }
 </style>

@@ -23,7 +23,6 @@
     </el-dialog>
 
     <!-- *************************************************************************************** -->
-
     <!-- 头部表单 -->
     <div class="manage-header">
       <el-button type="primary" @click="addUser"> + 新增</el-button>
@@ -38,6 +37,7 @@
         >
       </CommonForm>
     </div>
+
     <!-- 用户信息表 -->
     <CommonTable
       :tableData="tableData"
@@ -207,7 +207,7 @@ export default {
     editUser(row) {
       this.operateType = "edit";
       this.isShow = true;
-      this.operateForm = row;
+      // this.operateForm = row;
       /* 编辑页面修改数据导致原来数据也被更改了，
       原因是子组件Table的edit监听事件传出来的row是table中一整行的数据，
       该数据是Object类型，共享堆空间，

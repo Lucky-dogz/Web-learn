@@ -8,21 +8,19 @@
         size="mini"
         @click="handleMenu"
       ></el-button>
+
       <!-- <h3 style="color: #fff">首页</h3> -->
       <!-- 头部面包屑 -->
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item
-          class="bread"
-          v-for="item in tags"
-          :key="item.path"
-          :to="{ path: item.path }"
-          >{{ item.label }}</el-breadcrumb-item
-        >
+        <el-breadcrumb-item class="bread" v-for="item in tags" :key="item.path">
+          {{ item.label }}
+        </el-breadcrumb-item>
       </el-breadcrumb>
     </div>
+
     <!-- 右边栏 -->
     <div class="r-content">
-      <el-dropdown trigger="click" szie="mini">
+      <el-dropdown trigger="hover" szie="mini">
         <!-- 头像 -->
         <span>
           <img class="user" :src="userImg" />
@@ -44,22 +42,22 @@ export default {
   name: "CommonHeader",
   data() {
     return {
-      userImg: require("../assets/images/logo.png"),
+      userImg: require("../assets/images/wendi.jpg"),
     };
   },
   methods: {
     handleMenu() {
-      this.$store.commit("collapseMenu");
+      this.$store.commit("tab/collapseMenu");
     },
     logOut() {
-      this.$store.commit("clearToken");
-      this.$store.commit("clearMenu");
+      this.$store.commit("user/clearToken");
+      this.$store.commit("tab/clearMenu");
       this.$router.push("/login");
     },
   },
   computed: {
-    ...mapState({
-      tags: (state) => state.tab.tabList,
+    ...mapState("tab", {
+      tags: "tabList",
     }),
   },
 };

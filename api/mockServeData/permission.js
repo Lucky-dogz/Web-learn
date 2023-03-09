@@ -8,7 +8,7 @@ export default {
         // 判断账号和密码是否对应
         if (username === 'admin' && password === 'admin') {
             return {
-                code: 20000,
+                code: 200,
                 data: {
                     menu: [
                         {
@@ -41,14 +41,14 @@ export default {
                                     name: 'page1',
                                     label: '页面1',
                                     icon: 'setting',
-                                    url: 'Other/pageOne.vue'
+                                    url: 'Other/pageOne'
                                 },
                                 {
                                     path: '/page2',
                                     name: 'page2',
                                     label: '页面2',
                                     icon: 'setting',
-                                    url: 'Other/pageTwo.vue'
+                                    url: 'Other/pageTwo'
                                 }
                             ]
                         }
@@ -59,7 +59,7 @@ export default {
             }
         } else if (username === 'lihaonuo' && password === 'lihaonuo') {
             return {
-                code: 20000,
+                code: 200,
                 data: {
                     menu: [
                         {
@@ -83,7 +83,7 @@ export default {
             }
         } else {
             return {
-                code: -999,
+                code: -1,
                 data: {
                     message: '密码错误'
                 }

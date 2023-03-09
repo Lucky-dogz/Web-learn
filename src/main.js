@@ -20,7 +20,7 @@ Vue.prototype.$http = http
 
 // 导航守卫，设置权限，如果没有token凭证直接跳转login页面
 router.beforeEach((to, from, next) => {
-  store.commit('getToken') // 将浏览器里的token放在state里面，防止刷新后页面跳回login
+  store.commit('user/getToken') // 将浏览器里的token放在state里面，防止刷新后页面跳回login
   const token = store.state.user.token
   if (!token && to.name !== 'login') {
     next({ name: 'login' })
@@ -29,11 +29,13 @@ router.beforeEach((to, from, next) => {
   }
 })
 
+// console.log(router);
+
 new Vue({
   router,
   store,
   render: h => h(App),
   created() {
-    store.commit("addMenu", router);
+    store.commit("tab/addMenu", router);
   }
 }).$mount('#app')

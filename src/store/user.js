@@ -1,6 +1,7 @@
 // 存储关于用户的数据和操作
 import Cookie from 'js-cookie'
 export default {
+    namespaced: true,//开启命名空间
     state: {
         token: ''
     },

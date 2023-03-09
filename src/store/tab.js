@@ -1,6 +1,7 @@
 // 存储主页菜单的数据和操作
 import Cookie from "js-cookie"
 export default {
+    namespaced: true,//开启命名空间
     // 存储数据
     state: {
         isCollapse: false,
@@ -12,7 +13,7 @@ export default {
                 icon: 'home'
             }
         ],
-        currentMenu: null,
+        currentMenu: "home",
         menu: [],
     },
     mutations: {
@@ -23,13 +24,13 @@ export default {
         // 选则菜单栏
         selectMenu(state, val) {
             if (val.name !== 'home') {
-                state.currentMenu = val
+                state.currentMenu = val.name
                 const result = state.tabList.findIndex(item => item.name === val.name)
                 if (result === -1) {
                     state.tabList.push(val)
                 }
             } else {
-                state.currentMenu = null
+                state.currentMenu = "home"
             }
         },
         // 关闭面包屑
@@ -70,11 +71,12 @@ export default {
                     menuArray.push(item)
                 }
             })
-            // 路由动态台添加,被每个路由都添加到Main主路由里面
+            // 路由动态台添加,把每个路由都添加到Main主路由里面
             menuArray.forEach(item => {
                 // console.log(item);
                 router.addRoute('Main', item)
             })
+            // console.log(menuArray);
         }
     }
 }

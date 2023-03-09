@@ -3,7 +3,7 @@ import homeApi from './mockServeData/home'
 import userApi from './mockServeData/user';
 import permissionApi from './mockServeData/permission';
 /*
-记录用于生成响应数据的函数。当拦截到匹配 rurl 的 Ajax 请求时，
+记录用于生成响应数据的函数。当拦截到匹配 url 的 Ajax 请求时，
 函数 function(options) 将被执行，并把执行结果作为响应数据返回。
 */
 /* 路径可以随便写，只要和data.js里面的路径一致就行，表示从哪里请求数据，

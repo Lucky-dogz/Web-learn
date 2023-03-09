@@ -6,6 +6,7 @@
     :rules="rules"
     ref="form"
     label-width="100px"
+    @keyup.enter.native="login"
   >
     <h3 class="login-title">系统登陆</h3>
 
@@ -87,16 +88,16 @@ export default {
       因为在不同用户下的菜单不同，因此根据账户获取不同菜单栏 */
       getMenu(this.form).then(({ data: res }) => {
         // 账户密码正确
-        if (res.code === 20000) {
+        if (res.code === 200) {
           // 不管有没有菜单都先清除
-          this.$store.commit("clearMenu");
-          this.$store.commit("clearToken");
+          this.$store.commit("tab/clearMenu");
+          this.$store.commit("user/clearToken");
           // 重新根据账户设置菜单
-          this.$store.commit("setMenu", res.data.menu);
+          this.$store.commit("tab/setMenu", res.data.menu);
           // 设置token
-          this.$store.commit("setToken", res.data.token);
+          this.$store.commit("user/setToken", res.data.token);
           // 添加菜单
-          this.$store.commit("addMenu", this.$router);
+          this.$store.commit("tab/addMenu", this.$router);
           // 跳转主页
           this.$router.push({ name: "home" });
         }

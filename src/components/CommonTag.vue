@@ -24,17 +24,21 @@ export default {
   },
   computed: {
     // 获取tabList
-    ...mapState({
-      tags: (state) => state.tab.tabList,
+    ...mapState("tab", {
+      tags: "tabList",
     }),
   },
   methods: {
     // 切换面包屑路由
     changeMenu(item) {
+      // 如果依旧点击当前菜单,不进行跳转
+      if (item.name == this.$route.name) {
+        return;
+      }
       this.$router.push({ name: item.name });
     },
     // 删除所选择的面包屑
-    ...mapMutations({
+    ...mapMutations("tab", {
       close: "closeTag",
     }),
     // 删除面包屑路由

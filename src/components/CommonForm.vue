@@ -15,11 +15,13 @@
         v-model="/* eslint-disable */ form[item.model]"
       >
       </el-input>
+
       <!-- switch框封装 -->
       <el-switch
         v-if="item.type === 'switch'"
         v-model="form[item.model]"
       ></el-switch>
+
       <!-- 日期封装 -->
       <el-date-picker
         v-if="item.type === 'date'"
@@ -28,6 +30,7 @@
         placeholder="选择日期"
         v-model="form[item.model]"
       ></el-date-picker>
+
       <!-- 选择option封装 -->
       <el-select
         v-if="item.type === 'select'"

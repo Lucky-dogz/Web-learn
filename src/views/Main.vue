@@ -38,6 +38,7 @@ export default {
 }
 
 .el-main {
+  width: 1320px;
   padding-top: 0;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <el-menu
-    default-active="1-4-1"
+    :default-active="$route.path"
     class="el-menu-vertical-demo"
     @open="handleOpen"
     @close="handleClose"
@@ -9,7 +9,7 @@
     text-color="#fff"
     active-text-color="#ffd04b"
   >
-    <h3>{{ isCollapse ? "后台" : "通用后台管理系统" }}</h3>
+    <h3>{{ isCollapse ? "后台" : "后台管理系统" }}</h3>
 
     <!-- 没有子菜单，遍历渲染-->
     <el-menu-item
@@ -20,7 +20,7 @@
     >
       <!-- 拼接icon图标 -->
       <i :class="'el-icon-' + item.icon"></i>
-      <span slot="title">{{ item.label }}</span>
+      <span>{{ item.label }}</span>
     </el-menu-item>
 
     <!-- 有子菜单，遍历渲染-->
@@ -32,17 +32,18 @@
       <template slot="title">
         <!-- 拼接icon图标 -->
         <i :class="'el-icon-' + item.icon"></i>
-        <span slot="title">{{ item.label }}</span>
+        <span>{{ item.label }}</span>
       </template>
 
-      <el-menu-item-group
-        v-for="(subItem, subIndex) in item.children"
-        :index="subIndex + ''"
-        :key="subItem.path"
-      >
-        <el-menu-item @click="clickMenu(subItem)" :index="String(subIndex)">{{
-          subItem.label
-        }}</el-menu-item>
+      <el-menu-item-group>
+        <el-menu-item
+          v-for="subItem in item.children"
+          :key="subItem.path"
+          @click="clickMenu(subItem)"
+          :index="subItem.path + ''"
+        >
+          {{ subItem.label }}
+        </el-menu-item>
       </el-menu-item-group>
     </el-submenu>
   </el-menu>
@@ -66,13 +67,17 @@ export default {
     },
     // 点击菜单
     clickMenu(item) {
+      // 如果依旧点击当前菜单,不进行跳转
+      if (item.name == this.$route.name) {
+        return;
+      }
       // 添加路由
       this.$router.push({
         name: item.name,
       });
       // console.log(item.name);
       // 添加面包屑
-      this.$store.commit("selectMenu", item);
+      this.$store.commit("tab/selectMenu", item);
     },
   },
   computed: {

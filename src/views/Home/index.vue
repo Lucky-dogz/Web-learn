@@ -35,44 +35,44 @@
         </el-table>
       </el-card>
     </el-col>
+
     <!-- 右侧 -->
     <el-col :span="16">
       <!-- 订单部分 -->
-      <div class="num" v-for="item in countData" :key="item.name">
-        <el-card
-          :body-style="{ display: 'flex', padding: 0 }"
-          style="word-break: break-all"
-        >
-          <!-- 图标 -->
-          <i
-            class="icon"
-            :class="`el-icon-${item.icon}`"
-            :style="{ background: item.color }"
-          ></i>
-          <!-- 详情 -->
-          <div class="detail">
-            <p class="value">￥{{ item.value }}</p>
-            <p class="txt">{{ item.name }}</p>
-          </div>
-        </el-card>
+      <div class="order">
+        <div class="num" v-for="item in countData" :key="item.name">
+          <el-card
+            :body-style="{ display: 'flex', padding: 0 }"
+            style="word-break: break-all"
+          >
+            <!-- 图标 -->
+            <i
+              class="icon"
+              :class="`el-icon-${item.icon}`"
+              :style="{ background: item.color }"
+            ></i>
+            <!-- 详情 -->
+            <div class="detail">
+              <p class="value">￥{{ item.value }}</p>
+              <p class="txt">{{ item.name }}</p>
+            </div>
+          </el-card>
+        </div>
       </div>
 
       <!-- 折线图 -->
       <el-card
-        style="
-          height: 280px;
-          width: 950px;
-          margin-left: 10px;
-          margin-top: 175px;
-        "
+        style="height: 280px; width: 813px; margin-left: 10px; margin-top: 20px"
       >
         <div style="height: 280px" ref="echarts"></div>
       </el-card>
+
       <div class="graph">
         <!-- 柱状图 -->
         <el-card style="height: 260px">
           <div style="height: 240px" ref="UserEcharts"></div>
         </el-card>
+
         <!-- 饼状图 -->
         <el-card style="height: 260px">
           <div style="height: 240px" ref="VedioEcharts"></div>
@@ -91,7 +91,7 @@ export default {
   name: "HOme",
   data() {
     return {
-      userImg: require("@/assets/images/logo.png"),
+      userImg: require("@/assets/images/wendi.jpg"),
       // 左侧数据
       tableData: [],
       tableLabel: {
@@ -114,6 +114,7 @@ export default {
           icon: "star-on",
           color: "#ffb980",
         },
+
         {
           name: "今日未支付订单",
           value: 210,
@@ -126,6 +127,7 @@ export default {
           icon: "success",
           color: "#2ec7c9",
         },
+
         {
           name: "本月收藏订单",
           value: 1234,
@@ -267,7 +269,7 @@ export default {
     // 拦截Ajax请求并获取Mock生成的数据
     getData().then((res) => {
       const { code, data } = res.data;
-      if (code === 20000) {
+      if (code === 200) {
         // 折线图
         this.orderEcharts(data);
         // 柱状图
@@ -317,38 +319,46 @@ export default {
     }
   }
 }
-.num {
-  float: left;
+.order {
+  width: 825px;
+  height: 130px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
   margin-top: 20px;
-  padding-left: 10px;
-  .el-card {
-    display: flex;
-    width: 309px;
-    height: 60px;
-    .icon {
-      text-align: center;
-      line-height: 60px;
-      width: 70px;
-      height: 100%;
-    }
-    .icon::before {
-      color: #fff;
-      display: inline-block;
-      transform: scale(2);
-    }
-    .value {
-      margin: 5px;
-      font-size: 20px;
-    }
-    .txt {
-      margin-top: 1px;
-      margin-left: 10px;
-      font-size: 10px;
-      color: rgb(93, 93, 93);
+  .num {
+    padding-left: 10px;
+    .el-card {
+      display: flex;
+      width: 250px;
+      height: 60px;
+      .icon {
+        text-align: center;
+        line-height: 60px;
+        width: 70px;
+        height: 100%;
+      }
+      .icon::before {
+        color: #fff;
+        display: inline-block;
+        transform: scale(2);
+      }
+      .value {
+        margin: 5px;
+        font-size: 20px;
+      }
+      .txt {
+        margin-top: 1px;
+        margin-left: 10px;
+        font-size: 10px;
+        color: rgb(93, 93, 93);
+      }
     }
   }
 }
 .graph {
+  width: 825px;
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
