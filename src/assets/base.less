@@ -1,0 +1,91 @@
+@import '~antd/dist/antd.css';
+
+@bgcolor: #efefef;
+
+body {
+    font-size: 14px;
+    color: #333;
+    font-family: "微软雅黑";
+    background-color: @bgcolor;
+}
+
+#app {
+    height: 100vh;
+    background-color: pink;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    background-color: white;
+
+    .header_left {
+        width: 260px;
+        height: 60px;
+        padding: 0 20px;
+
+    }
+
+    .ant-select-dropdown-menu {
+        background: #1F1F26;
+        border: solid 1px #32323a;
+    }
+
+    .header_right {
+        padding: 0 35px;
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        span {
+            margin-right: 5px;
+        }
+
+        .ant-dropdown-link {
+            display: block;
+            height: 50px;
+            color: black;
+
+            &:hover {
+                color: #1890ff;
+            }
+        }
+
+    }
+
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+    .aside {
+        height: calc(100vh - 130px);
+    }
+
+    .container_box {
+        padding: 20px;
+
+        .content_box {
+            background-color: #fff;
+            height: calc(100vh - 200px);
+            overflow: hidden;
+        }
+    }
+}
+
+
+
+footer {
+    height: 70px;
+    background-color: #445760;
+    color: white;
+    line-height: 70px;
+    text-align: center;
+}
